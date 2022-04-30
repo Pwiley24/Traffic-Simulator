@@ -3,7 +3,6 @@ package TrafficSim;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
 
 /*
@@ -15,6 +14,7 @@ public class Road extends JPanel{
 	final int LANE_HEIGHT = 145;
 	final int ROAD_WIDTH = 800;
 	ArrayList<Vehicles> cars = new ArrayList<Vehicles>();
+	int carCount = 0;
 	
 	public Road() {
 		super();
@@ -55,6 +55,7 @@ public class Road extends JPanel{
 					if(v.getX() > ROAD_WIDTH) {
 						if(collision(0, v.getY(), v) == false){ //if it won't collide when it wraps around
 							v.setX(-10);
+							carCount++;
 						}
 					}
 				}else{ //colliding with car if you continue
@@ -84,6 +85,15 @@ public class Road extends JPanel{
 			}
 		}
 		return false;
+	}
+		
+	public int getCarCount(){
+		return carCount;
+	}
+	
+		
+	public void resetCarCount(){
+		carCount = 0;
 	}
 	
 }
