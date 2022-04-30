@@ -50,20 +50,25 @@ public class Road extends JPanel{
 	public void step() {
 			for(int i = 0; i < cars.size(); i++) {
 				Vehicles v = cars.get(i);
-				v.setX(v.getX() + v.getSpeed());
-				if(v.getX() > ROAD_WIDTH) {
-					v.setX(-10);
-				}
+				if(collision(v.getX()+v.getSpeed(),v.getY(), v) == false){//if the car won't collide with something continue straight
+					v.setX(v.getX() + v.getSpeed());
+					if(v.getX() > ROAD_WIDTH) {
+						if((collision(0, v.getY(), v) == false){ //if it won't collide when it wraps around
+							v.setX(-10);
+						}
+					}
+				}else{ //colliding with car if you continue
+					if(y > 
 			}
 		}
 	
-	public boolean collision(int x, int y, int width, Vehicles v) {
+	public boolean collision(int x, int y, Vehicles v) {
 		for(int i = 0; i < cars.size(); i++) {
 			Vehicles u = cars.get(i);
 			if(y == u.getY()) {// if in the same lane
 				if(u.equals(v) == false) {//if not checking self
-					if(v.getX() < u.getX() + u.getWidth() && //cars left side is to the left of the other cars right side
-							v.getX() + v.getWidth() > u.getX()) {//cars right side is to the right of the other cars left side
+					if(x < u.getX() + u.getWidth() && //cars left side is to the left of the other cars right side
+							x + v.getWidth() > u.getX()) {//cars right side is to the right of the other cars left side
 						return true;
 					}
 				}
