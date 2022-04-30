@@ -21,9 +21,12 @@ public class TrafficCode implements ActionListener, Runnable {
 	Container south = new Container();
 	JButton start = new JButton("Start");
 	JButton stop = new JButton("Stop");
+	JLabel throughput = new JLabel("Throughput: 0");
 	Road road = new Road();
 	
 	boolean running = false;
+	int carCount = 0;
+	long startTime = 0;
 	
 	public TrafficCode() {
 		//Layout for the Frame:
