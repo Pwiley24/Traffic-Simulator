@@ -79,7 +79,7 @@ public class TrafficCode implements ActionListener, Runnable {
 				for(int y = 40; y < 600; y = y + road.LANE_HEIGHT) {//add a semi to one of the lanes for y
 					semi.setX(x);
 					semi.setY(y);
-					if(road.collision(x, y, semi.getWidth(), semi) == false) {
+					if(road.collision(x, y, semi) == false) {
 						frame.repaint();
 						return;
 					}
@@ -92,7 +92,7 @@ public class TrafficCode implements ActionListener, Runnable {
 				for(int y = 40; y < 600; y = y + road.LANE_HEIGHT) {//add a suv to one of the lanes for y
 					suv.setX(x);
 					suv.setY(y);
-					if(road.collision(x, y, suv.getWidth(), suv) == false) {
+					if(road.collision(x, y, suv) == false) {
 						frame.repaint();
 						return;
 					}
@@ -105,7 +105,7 @@ public class TrafficCode implements ActionListener, Runnable {
 				for(int y = 40; y < 600; y = y + road.LANE_HEIGHT) {//add a sport to one of the lanes for y
 					sports.setX(x);
 					sports.setY(y);
-					if(road.collision(x, y, sports.getWidth(), sports) == false) {
+					if(road.collision(x, y, sports) == false) {
 						frame.repaint();
 						return;
 					}
