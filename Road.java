@@ -53,12 +53,21 @@ public class Road extends JPanel{
 				if(collision(v.getX()+v.getSpeed(),v.getY(), v) == false){//if the car won't collide with something continue straight
 					v.setX(v.getX() + v.getSpeed());
 					if(v.getX() > ROAD_WIDTH) {
-						if((collision(0, v.getY(), v) == false){ //if it won't collide when it wraps around
+						if(collision(0, v.getY(), v) == false){ //if it won't collide when it wraps around
 							v.setX(-10);
 						}
 					}
 				}else{ //colliding with car if you continue
-					if(y > 
+					if((v.getY() > 40) && 
+						(collision(v.getX(), v.getY()-LANE_HEIGHT, v) == false)){ //check to see if can move to left lane
+						v.setY(v.getY() - LANE_HEIGHT);
+					}
+					else if((v.getY() < 40 + 3*LANE_HEIGHT) && 
+						(collision(v.getX(), v.getY()+LANE_HEIGHT, v) == false)){ //check to see if can move to right lane
+						v.setY(v.getY() + LANE_HEIGHT);
+					}
+					
+						
 			}
 		}
 	
