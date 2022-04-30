@@ -39,12 +39,14 @@ public class TrafficCode implements ActionListener, Runnable {
 		
 		
 		//Layout for button panel
-		south.setLayout(new GridLayout(1,2));
+		south.setLayout(new GridLayout(1,3));
 		south.add(start);
 		start.addActionListener(this);
 		south.add(stop);
 		stop.addActionListener(this);
+		sout.add(throughput);
 		frame.add(south, BorderLayout.SOUTH);
+		
 		
 		left.setLayout(new GridLayout(3, 1));
 		left.add(semiBtn);
@@ -69,6 +71,8 @@ public class TrafficCode implements ActionListener, Runnable {
 		if(event.getSource().equals(start)) {
 			if(running == false) {
 				running = true;
+				road.resetCarCount();
+				startTime = System.currentTimeMillis();
 				Thread t = new Thread(this);
 				t.start();
 			}
@@ -123,6 +127,9 @@ public class TrafficCode implements ActionListener, Runnable {
 	public void run() {
 		while(running == true) {
 			road.step();
+			carCount = road.getCarCount();
+			double throughputCalc = (double)carCount / 1000 * (double)(System.currentTimeMillis() - startTime);
+			throughput.setText("Throughput: " + throughputCalc);
 			frame.repaint();
 			try {
 				Thread.sleep(100);
