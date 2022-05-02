@@ -67,8 +67,7 @@ public class Road extends JPanel{
 						(collision(v.getX(), v.getY()+LANE_HEIGHT, v) == false)){ //check to see if can move to right lane
 						v.setY(v.getY() + LANE_HEIGHT);
 					}
-					
-						
+				}
 			}
 		}
 	
