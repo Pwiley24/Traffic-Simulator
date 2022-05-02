@@ -1,3 +1,11 @@
+/*
+ * This program simulates traffic using a JFrame platform.
+ * There are three types of cars: sports car, SUV, and Semi.
+ * Cars will switch lanes if they can and will slow down behind slower cars.
+ * Author: Paige Wiley
+ * Date: 5-1-2022
+ */
+
 package TrafficSim;
 
 import java.awt.BorderLayout;
@@ -8,6 +16,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class TrafficCode implements ActionListener, Runnable {
 
@@ -44,7 +53,7 @@ public class TrafficCode implements ActionListener, Runnable {
 		start.addActionListener(this);
 		south.add(stop);
 		stop.addActionListener(this);
-		sout.add(throughput);
+		south.add(throughput);
 		frame.add(south, BorderLayout.SOUTH);
 		
 		
